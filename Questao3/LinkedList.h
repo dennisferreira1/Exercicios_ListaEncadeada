@@ -8,7 +8,7 @@
 #define __LinkedList__LinkedList__
 
 #include "Node.h"
-#include <string>
+
 
 typedef enum {
     OK ,

@@ -1,21 +1,26 @@
 #include <iostream>
 
 #include "Sequence.h"
+#include "Node.h"
 
 using namespace std;
 
 
 template <typename T>
-void aux_invert(Sequence<T>* lista, int quantidade){
-	if(quantidade != 0){
-		lista->insertEnd(lista->remove(quantidade));
-		aux_invert(lista, --quantidade);
+void aux_invert(Node<T>* ultimo, Node<T>* penultimo){
+	if(ultimo == nullptr){
+		return;	
+	}
+	else{
+		aux_invert(ultimo->getNext(), ultimo);
+
+		ultimo->setNext(penultimo);
 	}
 }
 
 template <typename T>
 void invert(Sequence<T>* lista){
-	aux_invert(lista, lista->getQuantity());
+	aux_invert(lista->getFirst(), nullptr);
 }
 
 

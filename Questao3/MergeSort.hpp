@@ -1,25 +1,34 @@
-#include "Sort.hpp"
+//
+//  Sort.h
+//  Aula-Ordenacao
+//
+//  Created by Eiji Adachi Medeiros Barbosa on 09/03/17.
+//  Copyright © 2017 Eiji Adachi Medeiros Barbosa. All rights reserved.
+//
 
-using namespace std;
+#ifndef MergeSort_hpp
+#define MergeSort_hpp
+
+#include "LinkedList.h"
+
+//template <typename T>
+//LinkedList<T>* mergeSortList(LinkedList<T>* lista1, LinkedList<T>* lista2);
 
 template <typename T>
-LinkedList<T>* intercalar(LinkedList<T>* lista1, LinkedList<T>* lista2);
-
-template <typename T>
-LinkedList<T>* sortList(LinkedList<T>* lista1, LinkedList<T>* lista2)
+LinkedList<T>* merge(LinkedList<T>* lista1, LinkedList<T>* lista2)
 {
-	return intercalar(lista1, lista2);
+	return mergeSortList(lista1, lista2);
 }
 
 template <typename T>
-LinkedList<T>* intercalar(LinkedList<T>* lista1, LinkedList<T>* lista2)
+LinkedList<T>* mergeSortList(LinkedList<T>* lista1, LinkedList<T>* lista2)
 {
 	// Nova lista para armazenar os nós das duas listas em ordem crescente
 	LinkedList<T>* newList= new LinkedList<T>();
 	// Ponteiro aux1 apontando para o primeiro nó após a cabeça da lista1
-	Node<string>* aux1= lista1->getHead()->getNext();
+	Node<T>* aux1= lista1->getHead()->getNext();
 	// Ponteiro aux2 apontando para o primeiro nó após a cabeça da lista2
-	Node<string>* aux2= lista1->getHead()->getNext();
+	Node<T>* aux2= lista2->getHead()->getNext();
 
 	while(aux1 != lista1->getTail() && aux2 != lista2->getTail())
 	{
@@ -47,3 +56,7 @@ LinkedList<T>* intercalar(LinkedList<T>* lista1, LinkedList<T>* lista2)
 
 	return newList;
 }
+
+
+#endif /* Sort_hpp */
+
